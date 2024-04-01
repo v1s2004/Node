@@ -1,0 +1,31 @@
+{{! Search Form }}
+<form action="/workouts/search" method="GET" class="mb-4">
+  <div class="input-group">
+    <input type="text" class="form-control" name="query" placeholder="Search workouts..." required>
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="submit">Search</button>
+    </div>
+  </div>
+</form>
+
+{{! Workouts Display Section }}
+<h1 class="mb-4">Available Workouts</h1>
+<div class="row">
+  {{#each workouts}}
+    <div class="col-md-4">
+      <div class="card mb-4">
+        {{#if this.image}}
+          <img src="{{this.image}}" class="card-img-top" alt="{{this.name}}">
+        {{else}}
+          <img src="/path/to/default/image.jpg" class="card-img-top" alt="Default Image">
+        {{/if}}
+        <div class="card-body">
+          <h5 class="card-title">{{this.name}}</h5>
+          <p class="card-text">{{this.description}}</p>
+        </div>
+      </div>
+    </div>
+  {{else}}
+    <p>No workouts found.</p>
+  {{/each}}
+</div>
